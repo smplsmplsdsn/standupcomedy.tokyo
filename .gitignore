@@ -1,0 +1,8 @@
+# app(wordpress)はテーマのみGit管理する
+/app/*
+!/app/wp-content
+/app/wp-content/index.php
+/app/wp-content/languages
+/app/wp-content/plugins
+/app/wp-content/themes/*
+!/app/wp-content/themes/standupcomedy
