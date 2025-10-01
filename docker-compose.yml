@@ -1,0 +1,56 @@
+services:
+  build:
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+    container_name: standup-build
+    working_dir: /app
+    volumes:
+      - ./build:/app:cached
+      - ./build/js:/app/js:cached
+      - ./www/assets:/app/assets:cached
+      - build_node_modules:/app/node_modules
+    command: tail -f /dev/null
+
+  static:
+
+    image: nginx:alpine
+    container_name: standup-static
+    volumes:
+      - ./www:/usr/share/nginx/html:ro
+    ports:
+      - "8085:80"
+    restart: unless-stopped
+
+  wordpress:
+    image: wordpress:6.4-php8.2-apache
+    container_name: standup-wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME','http://localhost:8084');
+        define('WP_SITEURL','http://localhost:8084');
+    volumes:
+      - ./app:/var/www/html
+    ports:
+      - "8084:80"
+    restart: unless-stopped
+
+  db:
+    image: mysql:8
+    container_name: standup-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  build_node_modules:
