@@ -7,6 +7,5 @@
 /app/wp-content/themes/*
 !/app/wp-content/themes/standupcomedy
 
-# buildは.  individuaのみGit管理する
-/build/*
-!/build/individual
+# build
+/build/dist
