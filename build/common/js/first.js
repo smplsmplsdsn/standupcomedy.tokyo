@@ -1,2 +1,5 @@
-console.log('helloddddfa')
-console.log('todya')
+// 共通メソッド
+const Fn = {}
+
+// 共通イベント
+const Evt = {}
