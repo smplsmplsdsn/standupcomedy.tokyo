@@ -6,6 +6,6 @@ foreach ($files as $file) {
   include_once $file;
 }
 
-$images = getGalleryImages($dir . '/../../assets/gallery/', $dir . '/../..');
+$images = getGalleryImages($dir . '/../../assets/gallery/2026-04-23', $dir . '/../..');
 
 echo json_encode($images);

@@ -22,7 +22,7 @@
     <div class="bg-img js-bg-img"></div>
     <div class="bg-dot"></div>
     <div class="bg-date">
-      <span class="bg-date-text">2026-03-30</span>
+      <span class="bg-date-text">2026-04-23</span>
     </div>
   </div>
   <script src="/assets/js/jquery-4.0.0.min.js"></script>
