@@ -1,8 +1,11 @@
 # standupcomedy.tokyo
 
+## 使用時
+docker compose up -d && dgulp
+
 ## トラベルシューティング
 
-### docker-compose.yml の修正が反映されない
+### docker-compose.yml の修正が反映されないdgulp
 
 docker compose up -d --force-recreate
 このように、一旦コンテナの削除が必要になる
